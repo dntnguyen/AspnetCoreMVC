@@ -15,6 +15,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreApp.Data", "..\CoreApp.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreApp.Application", "..\CoreApp.Application\CoreApp.Application.csproj", "{C0889194-C6E4-4BA8-8F73-AE1818FEC0A6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Presentation", "1 - Presentation", "{72AFBB9E-105D-4160-8F24-10F65DE95207}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Application", "2 - Application", "{D8264D00-69C7-40D2-9388-5A9EA371D12C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Domain", "3 - Domain", "{7978D2C3-D899-4185-ACFD-EF1429B3EA5A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infrastructure", "4 - Infrastructure", "{FD250E3E-01DD-4A6D-99D7-F26EB4C6D54C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,6 +56,14 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AFF1FF77-BF05-4B2F-88D0-4B05FAD430F3} = {72AFBB9E-105D-4160-8F24-10F65DE95207}
+		{F09A203A-C854-44C7-8CCA-17143FF2B92A} = {FD250E3E-01DD-4A6D-99D7-F26EB4C6D54C}
+		{23AA47B3-A75E-4653-BEA3-1E821FC7AFFF} = {FD250E3E-01DD-4A6D-99D7-F26EB4C6D54C}
+		{9A99CF64-012C-44DE-B0F9-553AFE2C3E75} = {7978D2C3-D899-4185-ACFD-EF1429B3EA5A}
+		{B310EBEE-D7FA-4FFF-81D7-3569D9C7960A} = {7978D2C3-D899-4185-ACFD-EF1429B3EA5A}
+		{C0889194-C6E4-4BA8-8F73-AE1818FEC0A6} = {D8264D00-69C7-40D2-9388-5A9EA371D12C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B23BEAA2-996F-4A1F-804F-B21A75EBB323}
