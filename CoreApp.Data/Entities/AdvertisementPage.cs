@@ -11,8 +11,8 @@ using System.Text;
 namespace CoreApp.Data.Entities
 {
 
-    [Table("AdvertistmentPages")]
-    public class AdvertistmentPage : DomainEntity<string>
+    [Table("AdvertisementPages")]
+    public class AdvertisementPage : DomainEntity<string>
     {
         public string Name { get; set; }
 
