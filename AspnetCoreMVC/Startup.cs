@@ -2,8 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using CoreApp.Application.Implementation;
+using CoreApp.Application.Interfaces;
 using CoreApp.Data.EF;
+using CoreApp.Data.EF.Repositories;
 using CoreApp.Data.Entities;
+using CoreApp.Data.IRepositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -34,8 +39,16 @@ namespace AspnetCoreMVC
 
             services.AddScoped<UserManager<AppUser>, UserManager<AppUser>>();
             services.AddScoped<UserManager<AppRole>, UserManager<AppRole>>();
+
+            services.AddSingleton(Mapper.Configuration);
+            services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
             //services.AddTransient<IEmailSender, EmailSender>();
             services.AddTransient<DbInitializer>();
+
+
+            services.AddTransient<IProductCategoryRepository, ProductCategoryRepository>();
+            services.AddTransient<IProductCategoryService, ProductCategoryService>();
+
             services.AddControllersWithViews();
         }
 

@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="6.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CoreApp.Application\CoreApp.Application.csproj" />
     <ProjectReference Include="..\CoreApp.Data.EF\CoreApp.Data.EF.csproj" />
     <ProjectReference Include="..\CoreApp.Data\CoreApp.Data.csproj" />
