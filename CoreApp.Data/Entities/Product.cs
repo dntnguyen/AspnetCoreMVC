@@ -118,6 +118,7 @@ namespace CoreApp.Data.Entities
         public string SeoPageTitle { set; get; }
 
         [StringLength(255)]
+        [Column(TypeName ="varchar(255)")]
         public string SeoAlias { set; get; }
 
         [StringLength(255)]

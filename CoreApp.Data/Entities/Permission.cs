@@ -30,6 +30,7 @@ namespace CoreApp.Data.Entities
 
         [StringLength(128)]
         [Required]
+        [Column(TypeName = "varchar(128)")]
         public string FunctionId { get; set; }
 
         public bool CanCreate { set; get; }

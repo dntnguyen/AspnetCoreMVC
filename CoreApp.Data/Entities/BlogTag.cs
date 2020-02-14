@@ -16,7 +16,8 @@ namespace CoreApp.Data.Entities
     {
         public int BlogId { set; get; }
 
-
+        [MaxLength(50)]
+        [Column(TypeName = "varchar(50)")]
         public string TagId { set; get; }
 
         [ForeignKey("BlogId")]

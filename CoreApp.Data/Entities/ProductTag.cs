@@ -7,13 +7,14 @@ using System.Text;
 
 namespace CoreApp.Data.Entities
 {
+    [Table("ProductTags")]
     public class ProductTag : DomainEntity<int>
     {
         public int ProductId { get; set; }
         [StringLength(50)]
-        [Column(TypeName = "varchar")]
+        [Column(TypeName = "varchar(50)")]
         public string TagId { get; set; }
-
+        [Column(TypeName = "varchar(50)")]
         [ForeignKey("ProductId")]
         public virtual Product Product { get; set; }
 

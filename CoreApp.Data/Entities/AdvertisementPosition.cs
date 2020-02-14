@@ -21,6 +21,7 @@ namespace CoreApp.Data.Entities
         public string Name { get; set; }
 
         [ForeignKey("PageId")]
+        [Column(TypeName = "varchar(20)")]
         public virtual AdvertisementPage AdvertistmentPage { get; set; }
 
         public virtual ICollection<Advertisement> Advertisements { get; set; }

@@ -8,12 +8,11 @@ using System.Text;
 
 namespace CoreApp.Data.EF.Configurations
 {
-    public class ProductTagConfiguration : DbEntityConfiguration<ProductTag>
+    public class AnnouncementConfiguration : DbEntityConfiguration<Announcement>
     {
-        public override void Configure(EntityTypeBuilder<ProductTag> entity)
+        public override void Configure(EntityTypeBuilder<Announcement> entity)
         {
-            entity.Property(c => c.Id).HasMaxLength(255).IsRequired()
-            .HasColumnType("varchar(255)");
+            entity.Property(c => c.Id).HasMaxLength(128).IsRequired().HasColumnType("varchar(128)");
             // etc.
         }
     }

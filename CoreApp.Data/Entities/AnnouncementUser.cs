@@ -23,6 +23,7 @@ namespace CoreApp.Data.Entities
         }
 
         [StringLength(128)]
+        [Column(TypeName = "varchar(128)")]
         [Required]
         public string AnnouncementId { get; set; }
 

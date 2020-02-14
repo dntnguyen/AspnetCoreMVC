@@ -40,11 +40,12 @@ namespace AspnetCoreMVC
             services.AddScoped<UserManager<AppUser>, UserManager<AppUser>>();
             services.AddScoped<UserManager<AppRole>, UserManager<AppRole>>();
 
+            services.AddAutoMapper();
             services.AddSingleton(Mapper.Configuration);
             services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
-            //services.AddTransient<IEmailSender, EmailSender>();
-            services.AddTransient<DbInitializer>();
+            ////services.AddTransient<IEmailSender, EmailSender>();
 
+            services.AddTransient<DbInitializer>();
 
             services.AddTransient<IProductCategoryRepository, ProductCategoryRepository>();
             services.AddTransient<IProductCategoryService, ProductCategoryService>();
@@ -53,7 +54,7 @@ namespace AspnetCoreMVC
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, DbInitializer dbInitializer)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -79,7 +80,7 @@ namespace AspnetCoreMVC
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            dbInitializer.Seed().Wait();
+            
         }
     }
 }
