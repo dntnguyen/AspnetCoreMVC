@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29326.143
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspnetCoreMVC", "AspnetCoreMVC.csproj", "{AFF1FF77-BF05-4B2F-88D0-4B05FAD430F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspnetCoreMVC", "AspnetCoreMVC.csproj", "{AFF1FF77-BF05-4B2F-88D0-4B05FAD430F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreApp.Infrastructure", "..\CoreApp.Infrastructure\CoreApp.Infrastructure.csproj", "{F09A203A-C854-44C7-8CCA-17143FF2B92A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreApp.Infrastructure", "..\CoreApp.Infrastructure\CoreApp.Infrastructure.csproj", "{F09A203A-C854-44C7-8CCA-17143FF2B92A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreApp.Utilities", "..\CoreApp.Utilities\CoreApp.Utilities.csproj", "{23AA47B3-A75E-4653-BEA3-1E821FC7AFFF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreApp.Utilities", "..\CoreApp.Utilities\CoreApp.Utilities.csproj", "{23AA47B3-A75E-4653-BEA3-1E821FC7AFFF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreApp.Data.EF", "..\CoreApp.Data.EF\CoreApp.Data.EF.csproj", "{9A99CF64-012C-44DE-B0F9-553AFE2C3E75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreApp.Data.EF", "..\CoreApp.Data.EF\CoreApp.Data.EF.csproj", "{9A99CF64-012C-44DE-B0F9-553AFE2C3E75}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreApp.Data", "..\CoreApp.Data\CoreApp.Data.csproj", "{B310EBEE-D7FA-4FFF-81D7-3569D9C7960A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreApp.Data", "..\CoreApp.Data\CoreApp.Data.csproj", "{B310EBEE-D7FA-4FFF-81D7-3569D9C7960A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreApp.Application", "..\CoreApp.Application\CoreApp.Application.csproj", "{C0889194-C6E4-4BA8-8F73-AE1818FEC0A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreApp.Application", "..\CoreApp.Application\CoreApp.Application.csproj", "{C0889194-C6E4-4BA8-8F73-AE1818FEC0A6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Presentation", "1 - Presentation", "{72AFBB9E-105D-4160-8F24-10F65DE95207}"
 EndProject
