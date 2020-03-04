@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace AspnetCoreMVC.Areas.Admin.Controllers
 {
     [Area("Admin")]
-
+    [Authorize]
     public class BaseController : Controller
     {
 

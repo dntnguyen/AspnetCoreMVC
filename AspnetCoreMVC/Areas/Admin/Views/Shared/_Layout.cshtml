@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="~/admin-site/css/adminlte.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    @RenderSection("Styles", required: false)
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
     <div class="wrapper">
@@ -71,13 +73,13 @@
             <div class="sidebar">
                 <!-- Sidebar user panel (optional) -->
                 @*<div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="image">
-                        <img src="@User.GetSpecificClaim("Avatar")" class="img-circle elevation-2" alt="User Image">
-                    </div>
-                    <div class="info">
-                        <a href="#" class="d-block">@User.GetSpecificClaim("FullName")</a>
-                    </div>
-                </div>*@
+                        <div class="image">
+                            <img src="@User.GetSpecificClaim("Avatar")" class="img-circle elevation-2" alt="User Image">
+                        </div>
+                        <div class="info">
+                            <a href="#" class="d-block">@User.GetSpecificClaim("FullName")</a>
+                        </div>
+                    </div>*@
 
                 @await Component.InvokeAsync("SideBar")
                 <!-- /.sidebar-menu -->
@@ -119,6 +121,8 @@
     @*<script src="dist/js/demo.js"></script>*@
 
     <!-- PAGE PLUGINS -->
+    <script src="~/lib/mustache.js/mustache.js"></script>
+    <script src="~/lib/twbs-pagination/jquery.twbsPagination.js"></script>
     <!-- jQuery Mapael -->
     <script src="~/lib/jquery-mousewheel/jquery.mousewheel.min.js"></script>
     <script src="~/lib/raphael/raphael.min.js"></script>
@@ -135,5 +139,7 @@
 
     <!-- Custom Theme Scripts -->
     <script src="~/app/shared/coreapp.js"></script>
+
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

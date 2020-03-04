@@ -1,71 +1,74 @@
 {
-    "version": "1.0",
-    "defaultProvider": "cdnjs",
-    "libraries": [
-        {
-            "library": "nprogress@0.2.0",
-            "destination": "wwwroot/lib/nprogress/"
-        },
-        {
-            "library": "malihu-custom-scrollbar-plugin@3.1.5",
-            "destination": "wwwroot/lib/malihu-custom-scrollbar-plugin/"
-        },
-        {
-            "library": "fastclick@1.0.6",
-            "destination": "wwwroot/lib/fastclick/"
-        },
-        {
-            "library": "popper.js@1.16.1",
-            "destination": "wwwroot/lib/popper.js/"
-        },
-        {
-            "library": "notify@0.4.2",
-            "destination": "wwwroot/lib/notify/"
-        },
-        {
-            "library": "bootbox.js@5.4.0",
-            "destination": "wwwroot/lib/bootbox.js/"
-        },
-        {
-            "library": "animate.css@3.5.0",
-            "destination": "wwwroot/lib/animate.css/"
-        },
-        {
-            "library": "jquery@3.4.1",
-            "destination": "wwwroot/lib/jquery/"
-        },
-        {
-            "library": "twitter-bootstrap@4.3.1",
-            "destination": "wwwroot/lib/twitter-bootstrap/"
-        },
-        {
-            "library": "font-awesome@5.11.2",
-            "destination": "wwwroot/lib/font-awesome/"
-        }
-    ,
-{
-  "library": "overlayscrollbars@1.10.0",
-  "destination": "wwwroot/lib/overlayscrollbars/"
-}
-,
-{
-  "library": "jquery-mousewheel@3.1.13",
-  "destination": "wwwroot/lib/jquery-mousewheel/"
-}
-,
-{
-  "library": "raphael@2.3.0",
-  "destination": "wwwroot/lib/raphael/"
-}
-,
-{
-  "library": "jquery-mapael@2.2.0",
-  "destination": "wwwroot/lib/jquery-mapael/"
-}
-,
-{
-  "library": "Chart.js@2.9.3",
-  "destination": "wwwroot/lib/Chart.js/"
-}
-]
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "nprogress@0.2.0",
+      "destination": "wwwroot/lib/nprogress/"
+    },
+    {
+      "library": "malihu-custom-scrollbar-plugin@3.1.5",
+      "destination": "wwwroot/lib/malihu-custom-scrollbar-plugin/"
+    },
+    {
+      "library": "fastclick@1.0.6",
+      "destination": "wwwroot/lib/fastclick/"
+    },
+    {
+      "library": "popper.js@1.16.1",
+      "destination": "wwwroot/lib/popper.js/"
+    },
+    {
+      "library": "notify@0.4.2",
+      "destination": "wwwroot/lib/notify/"
+    },
+    {
+      "library": "bootbox.js@5.4.0",
+      "destination": "wwwroot/lib/bootbox.js/"
+    },
+    {
+      "library": "animate.css@3.5.0",
+      "destination": "wwwroot/lib/animate.css/"
+    },
+    {
+      "library": "jquery@3.4.1",
+      "destination": "wwwroot/lib/jquery/"
+    },
+    {
+      "library": "twitter-bootstrap@4.3.1",
+      "destination": "wwwroot/lib/twitter-bootstrap/"
+    },
+    {
+      "library": "font-awesome@5.11.2",
+      "destination": "wwwroot/lib/font-awesome/"
+    },
+    {
+      "library": "overlayscrollbars@1.10.0",
+      "destination": "wwwroot/lib/overlayscrollbars/"
+    },
+    {
+      "library": "jquery-mousewheel@3.1.13",
+      "destination": "wwwroot/lib/jquery-mousewheel/"
+    },
+    {
+      "library": "raphael@2.3.0",
+      "destination": "wwwroot/lib/raphael/"
+    },
+    {
+      "library": "jquery-mapael@2.2.0",
+      "destination": "wwwroot/lib/jquery-mapael/"
+    },
+    {
+      "library": "Chart.js@2.9.3",
+      "destination": "wwwroot/lib/Chart.js/"
+    },
+    {
+      "library": "mustache.js@2.3.0",
+      "destination": "wwwroot/lib/mustache.js/"
+    },
+    {
+      "library": "twbs-pagination@1.4.2",
+      "destination": "wwwroot/lib/twbs-pagination/"
+    }
+  ]
 }

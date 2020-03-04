@@ -1,0 +1,85 @@
+﻿@section Scripts { 
+    <script src="~/app/controllers/product/index.js"></script>
+    <script>
+        var productController = new productController();
+        productController.initialize();
+    </script>
+}
+
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Product List</h3>
+        <div class="card-tools">
+            <div class="input-group input-group-sm" style="width: 150px;">
+                <input type="text" id="txtKeyword" class="form-control float-right" placeholder="Search">
+
+                <div class="input-group-append">
+                    <button id="btnSearch" class="btn btn-default"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body p-0">
+        <table class="table table-sm table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Image</th>
+                    <th>Created Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="tbl_content">
+            </tbody>
+        </table>
+
+       
+    </div>
+    <!-- /.card-body -->
+
+    <div class="card-footer clearfix">
+        <div class="row">
+            <div class="col-sm-5">
+                <div class="dataTables_info" id="datatable-checkbox_info" role="status" area-live="polite">
+                    <select id="ddlPageSize">
+                        <option value="10" selected="selected">10</option>
+                        <option value="20">20</option>
+                        <option value="30">30</option>
+                        <option value="50">50</option>
+                    </select>
+                    <span class="item-per-page">
+                        mẫu tin/trang
+                    </span>
+                    Tổng số mẫu tin: <strong id="lblTotalRecords"></strong>
+                </div>
+            </div>
+            <div class="col-sm-7">
+                <div class="datatables_paginate paging_simple_numbers" id="datatable-checkbox_paginate">
+                    <ul id="paginationUL"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script id="tbl_template" type="x-tmpl-mustache">
+    <tr>
+        <td scope="row">
+            <button class="btn btn-sm btn-default"><i class="fas fa-pencil-alt"></i></button>
+
+            <button class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></button>
+        </td>
+        <td>{{Name}}</td>
+        <td>{{CategoryName}}</td>
+        <td>{{Price}}</td>
+        <td>{{{ImageUrl}}}</td>
+        <td>{{CreatedDate}}</td>
+        <td>{{{Status}}}</td>
+    </tr>
+
+</script>
