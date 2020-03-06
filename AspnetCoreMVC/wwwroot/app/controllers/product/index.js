@@ -1,5 +1,6 @@
 ﻿var productController = function () {
     this.initialize = function () {
+        loadCategories();
         loadData(false);
         registerEvents();
     }
@@ -15,6 +16,39 @@
             console.log(coreapp.configs.pageSize);
             loadData(true);
         })
+
+        $('#btnSearch').on('click', function () {
+            loadData(false);
+        })
+
+        $('#txtKeyword').on('keypress', function (e) {
+            if (e.which === 13) {
+                e.preventDefault();
+                loadData(false);
+            }
+        });
+    }
+
+    function loadCategories() {
+        $.ajax({
+            type: 'GET',
+            url: '/Admin/Product/GetAllCategories',
+            
+            dataType: 'json',
+            success: function (response) {
+                var render = "";
+                render += "<option value=''>--Select Category--</option>";
+                $.each(response, function (index, item) {
+                    
+                    render += "<option value='" + item.Id + "'>" + item.Name + "</option>";
+                });
+                $('#ddlCategory').html(render);
+            },
+            error: function (status) {
+                console.log(status);
+                coreapp.notify("Cannot load product categories", "error")
+            }
+        });
     }
 
     function loadData(isPageSizeChanged) {
@@ -24,7 +58,7 @@
             type: 'GET',
             url: '/Admin/Product/GetAllPaging',
             data: {
-                categoryId: null,
+                categoryId: $('#ddlCategory').val(),
                 keyword: $('#txtKeyword').val(),
                 pageNo: coreapp.configs.pageIndex,
                 pageSize: coreapp.configs.pageSize

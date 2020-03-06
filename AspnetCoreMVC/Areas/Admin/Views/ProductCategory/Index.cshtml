@@ -1,0 +1,35 @@
+﻿@section Styles {
+    <link href="~/lib/jquery-easyui/themes/bootstrap/easyui.css" rel="stylesheet" />
+    <link href="~/lib/jquery-easyui/themes/icon.css" rel="stylesheet" />
+}
+@section Scripts {
+    <script src="~/lib/jquery-easyui/jquery.easyui.min.js"></script>
+    <script src="~/app/controllers/product-category/index.js"></script>
+    <script>
+        var productCategoryController = new productCategoryController();
+        productCategoryController.initialize();
+    </script>
+}
+
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Product Categories</h3>
+
+        <div class="card-tools">
+            <div class="row">
+                <div class="col-sm-12 form-inline">
+
+                    <div class="input-group input-group-sm mr-sm-2">
+                        <button type="button" id="btnAddNew" class="btn btn-primary"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="card-body p-2">
+       <ul id="treeProductCategory"></ul>
+    </div>
+    <!-- /.card-body -->
+</div>

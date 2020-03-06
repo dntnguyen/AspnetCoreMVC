@@ -74,6 +74,9 @@ namespace AspnetCoreMVC
                 options.JsonSerializerOptions.PropertyNamingPolicy = null;
             });
 
+            services.AddTransient(typeof(IUnitOfWork), typeof(EFUnitOfWork));
+            services.AddTransient(typeof(IRepository<,>), typeof(EFRepository<,>));
+
             //Repository
             services.AddTransient<IProductCategoryRepository, ProductCategoryRepository>();
             services.AddTransient<IFunctionRepository, FunctionRepository>();

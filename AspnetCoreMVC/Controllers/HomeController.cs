@@ -20,7 +20,8 @@ namespace AspnetCoreMVC.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return Redirect("/Admin/Login/Index");
+            //return View();
         }
 
         public IActionResult Privacy()

@@ -10,15 +10,30 @@
 <div class="card">
     <div class="card-header">
         <h3 class="card-title">Product List</h3>
+       
         <div class="card-tools">
-            <div class="input-group input-group-sm" style="width: 150px;">
-                <input type="text" id="txtKeyword" class="form-control float-right" placeholder="Search">
+            <div class="row">
+                <div class="col-sm-12 form-inline">
+                    <select id="ddlCategory" class="form-control form-control-sm mr-sm-2">
+                        <option value=''>--Select Category--</option>
+                    </select>
 
-                <div class="input-group-append">
-                    <button id="btnSearch" class="btn btn-default"><i class="fas fa-search"></i></button>
+                    <div class="input-group input-group-sm mr-sm-2" style="width: 150px;">
+                        <input type="text" id="txtKeyword" class="form-control" placeholder="Search">
+
+                        <div class="input-group-append">
+                            <button id="btnSearch" class="btn btn-warning"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+
+
                 </div>
+        
             </div>
         </div>
+
+           
+     
     </div>
     <!-- /.card-header -->
     <div class="card-body p-0">
