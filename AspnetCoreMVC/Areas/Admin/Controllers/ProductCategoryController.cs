@@ -67,15 +67,10 @@ namespace AspnetCoreMVC.Areas.Admin.Controllers
             }
             else
             {
-                try
-                {
-                    _productCategoryService.Delete(id);
-                    _productCategoryService.Save();
-                }
-                catch (Exception ex)
-                {
-                    string error = ex.Message;
-                }
+              
+                _productCategoryService.Delete(id);
+                _productCategoryService.Save();
+               
                 return new OkObjectResult(id);
 
             }

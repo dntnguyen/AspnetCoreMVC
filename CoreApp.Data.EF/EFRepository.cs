@@ -69,7 +69,7 @@ namespace CoreApp.Data.EF
 
         public void Remove(T entity)
         {
-            Remove(entity);
+            _context.Set<T>().Remove(entity);
         }
 
         public void Remove(K id)
