@@ -30,6 +30,13 @@
     </div>
     <div class="card-body p-2">
        <ul id="treeProductCategory"></ul>
+       <div id="context_menu" class="easyui-menu" style="width:120px;">
+           <div id="btnEdit" data-ng-model-options="iconCls:'icon-edit'">Sửa</div>
+           <div id="btnDelete" data-ng-model-options="iconCls:'icon-delete'">Xóa</div>
+       </div>
     </div>
     <!-- /.card-body -->
 </div>
+
+
+@Html.Partial("_AddEditModal.cshtml")
