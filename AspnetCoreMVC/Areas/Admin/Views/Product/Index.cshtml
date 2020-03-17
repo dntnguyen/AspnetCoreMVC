@@ -1,8 +1,17 @@
-﻿@section Scripts { 
+﻿@{
+    ViewData["Title"] = "Index";
+}
+@section Styles{
+    <link href="~/lib/jquery-easyui/themes/bootstrap/easyui.css" rel="stylesheet" />
+    <link href="~/lib/jquery-easyui/themes/icon.css" rel="stylesheet" />
+}
+@section Scripts {
+    <script src="~/lib/jquery-easyui/jquery.easyui.min.js"></script>
     <script src="~/app/controllers/product/index.js"></script>
     <script>
         var productController = new productController();
         productController.initialize();
+
     </script>
 }
 
@@ -10,7 +19,7 @@
 <div class="card">
     <div class="card-header">
         <h3 class="card-title">Product List</h3>
-       
+
         <div class="card-tools">
             <div class="row">
                 <div class="col-sm-12 form-inline">
@@ -26,14 +35,16 @@
                         </div>
                     </div>
 
-
+                    <div class="input-group input-group-sm mr-sm-2">
+                        <button id="btnCreate" class="btn btn-sm btn-primary">Create</button>
+                    </div>
                 </div>
-        
+
             </div>
         </div>
 
-           
-     
+
+
     </div>
     <!-- /.card-header -->
     <div class="card-body p-0">
@@ -53,7 +64,7 @@
             </tbody>
         </table>
 
-       
+
     </div>
     <!-- /.card-body -->
 
@@ -85,9 +96,9 @@
 <script id="tbl_template" type="x-tmpl-mustache">
     <tr>
         <td scope="row">
-            <button class="btn btn-sm btn-default"><i class="fas fa-pencil-alt"></i></button>
+            <button class="btn btn-sm btn-default btn-edit" data-id="{{Id}}"><i class="fas fa-pencil-alt"></i></button>
 
-            <button class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></button>
+            <button class="btn btn-sm btn-danger btn-delete" data-id="{{Id}}"><i class="far fa-trash-alt"></i></button>
         </td>
         <td>{{Name}}</td>
         <td>{{CategoryName}}</td>
@@ -98,3 +109,6 @@
     </tr>
 
 </script>
+
+
+@Html.Partial("_AddEditModal.cshtml")

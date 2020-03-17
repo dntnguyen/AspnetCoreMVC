@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CoreApp.Application.Interfaces;
+using CoreApp.Application.ViewModels;
+using CoreApp.Utilities.Helpers;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace AspnetCoreMVC.Areas.Admin.Controllers
 {
@@ -40,6 +43,55 @@ namespace AspnetCoreMVC.Areas.Admin.Controllers
             var model = _productService.GetAllPaging(categoryId, keyword, pageNo, pageSize);
             return new OkObjectResult(model);
         }
+
+        [HttpGet]
+        public IActionResult GetById(int id)
+        {
+            var model = _productService.GetById(id);
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpPost]
+        public IActionResult SaveEntity(ProductViewModel productVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                productVm.SeoAlias = TextHelper.ToUnsignString(productVm.Name);
+                if (productVm.Id == 0)
+                {
+                    _productService.Add(productVm);
+                }
+                else
+                {
+                    _productService.Update(productVm);
+                }
+                _productService.Save();
+                return new OkObjectResult(productVm);
+            }
+        }
+
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return new BadRequestObjectResult(ModelState);
+            }
+            else
+            {
+                _productService.Delete(id);
+                _productService.Save();
+
+                return new OkObjectResult(id);
+            }
+        }
+
         #endregion
     }
 }
