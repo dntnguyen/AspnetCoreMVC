@@ -70,5 +70,10 @@
       "library": "twbs-pagination@1.4.2",
       "destination": "wwwroot/lib/twbs-pagination/"
     }
-  ]
+  ,
+{
+  "library": "ckeditor@4.7.3",
+  "destination": "wwwroot/lib/ckeditor/"
+}
+]
 }
