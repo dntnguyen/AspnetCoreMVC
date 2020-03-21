@@ -20,6 +20,10 @@ namespace CoreApp.Application.AutoMapper
           .ConstructUsing(c => new Product(c.Name, c.CategoryId, c.ImageUrl, c.Price, c.OriginalPrice,
           c.PromotionPrice, c.Description, c.Content, c.HomeFlag, c.HotFlag, c.Tags, c.Unit, c.Status,
           c.SeoPageTitle, c.SeoAlias, c.SeoKeywords, c.SeoDescription));
+
+            CreateMap<AppUserViewModel, AppUser>()
+          .ConstructUsing(c => new AppUser(c.Id.GetValueOrDefault(Guid.Empty), c.FullName, c.UserName,
+          c.Email, c.PhoneNumber, c.Avatar, c.Status));
         }
 
     }

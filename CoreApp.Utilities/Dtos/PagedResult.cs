@@ -4,10 +4,10 @@ using System.Text;
 
 namespace CoreApp.Utilities.Dtos
 {
-    public class PageResult<T> : BasePageResult where T : class
+    public class PagedResult<T> : BasePageResult where T : class
     {
         public IList<T> Results { get; set; }
-        public PageResult()
+        public PagedResult()
         {
             Results = new List<T>();
         }

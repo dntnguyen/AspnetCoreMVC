@@ -45,7 +45,7 @@ namespace CoreApp.Application.Implementation
             return _productRepository.FindAll(x => x.ProductCategory).ProjectTo<ProductViewModel>().ToList();
         }
 
-        public PageResult<ProductViewModel> GetAllPaging(int? categoryId, string keyword, int pageNo, int pageSize)
+        public PagedResult<ProductViewModel> GetAllPaging(int? categoryId, string keyword, int pageNo, int pageSize)
         {
             var query = _productRepository.FindAll(x => x.Status == Status.Active);
             if (string.IsNullOrEmpty(keyword) == false)
@@ -62,7 +62,7 @@ namespace CoreApp.Application.Implementation
             query = query.OrderByDescending(x => x.CreatedDate).Skip((pageNo - 1) * pageSize).Take(pageSize);
 
             var data = query.ProjectTo<ProductViewModel>().ToList();
-            var paginationSet = new PageResult<ProductViewModel>()
+            var paginationSet = new PagedResult<ProductViewModel>()
             {
                 Results = data,
                 CurrentPage = pageNo,

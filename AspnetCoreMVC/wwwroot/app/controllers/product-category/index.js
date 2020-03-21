@@ -1,4 +1,4 @@
-﻿var productCategoryController = function () {
+﻿var ProductCategoryController = function () {
     this.initialize = function () {
         loadData();
         registerEvents();
@@ -22,6 +22,33 @@
             resetFormMaintainance();
         });
 
+        $('#btnSelectImg').on('click', function () {
+            $('#fileInputImage').click();
+        });
+        $("#fileInputImage").on('change', function () {
+            var fileUpload = $(this).get(0);
+            var files = fileUpload.files;
+            var data = new FormData();
+            for (var i = 0; i < files.length; i++) {
+                data.append(files[i].name, files[i]);
+            }
+            $.ajax({
+                type: "POST",
+                url: "/Admin/Upload/UploadImage",
+                contentType: false,
+                processData: false,
+                data: data,
+                success: function (path) {
+                    $('#txtImage').val(path);
+                    coreapp.notify('Upload image succesful!', 'success');
+
+                },
+                error: function () {
+                    coreapp.notify('There was error uploading files!', 'error');
+                }
+            });
+        });
+
         $('body').on('click', '#btnEdit', function (e) {
             e.preventDefault();
             var that = $('#hidIdM').val();
@@ -41,7 +68,7 @@
 
                     $('#txtDescM').val(data.Description);
 
-                    $('#txtImageM').val(data.ThumbnailImage);
+                    $('#txtImage').val(data.ThumbnailImage);
 
                     $('#txtSeoKeywordM').val(data.SeoKeywords);
                     $('#txtSeoDescriptionM').val(data.SeoDescription);
@@ -98,7 +125,7 @@
                 var parentId = $('#ddlCategoryIdM').combotree('getValue');
                 var description = $('#txtDescM').val();
 
-                var image = $('#txtImageM').val();
+                var image = $('#txtImage').val();
                 var order = parseInt($('#txtOrderM').val());
                 var homeOrder = $('#txtHomeOrderM').val();
 
@@ -160,7 +187,7 @@
         $('#txtDescM').val('');
         $('#txtOrderM').val('');
         $('#txtHomeOrderM').val('');
-        $('#txtImageM').val('');
+        $('#txtImage').val('');
 
         $('#txtMetakeywordM').val('');
         $('#txtMetaDescriptionM').val('');

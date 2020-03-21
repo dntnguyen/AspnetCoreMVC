@@ -10,7 +10,7 @@ namespace CoreApp.Application.Interfaces
     {
         List<ProductViewModel> GetAll();
 
-        PageResult<ProductViewModel> GetAllPaging(int? categoryId, string keyword, int pageNo, int pageSize);
+        PagedResult<ProductViewModel> GetAllPaging(int? categoryId, string keyword, int pageNo, int pageSize);
 
         ProductViewModel Add(ProductViewModel product);
 

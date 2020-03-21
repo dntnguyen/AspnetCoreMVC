@@ -1,36 +1,26 @@
 ﻿@{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "User List";
 }
-@section Styles{
-    <link href="~/lib/ckeditor/skins/moono/editor.css" rel="stylesheet" />
-    <link href="~/lib/jquery-easyui/themes/bootstrap/easyui.css" rel="stylesheet" />
-    <link href="~/lib/jquery-easyui/themes/icon.css" rel="stylesheet" />
+@section Scripts{
 
-
-}
-@section Scripts {
-    <script src="~/lib/ckeditor/ckeditor.js"></script>
-    <script src="~/lib/jquery-easyui/jquery.easyui.min.js"></script>
-    <script src="~/app/controllers/product/index.js"></script>
+    <script src="~/app/controllers/user/index.js" asp-append-version="true"></script>
     <script>
-        var productObj = new ProductController();
-        productObj.initialize();
-
+        var userObj = new UserController();
+        userObj.initialize();
     </script>
 }
+@section Styles{
 
+}
+<input type="hidden" id="hid-category-id" value="0" />
 
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title">Product List</h3>
+        <h3 class="card-title">User List</h3>
 
         <div class="card-tools">
             <div class="row">
                 <div class="col-sm-12 form-inline">
-                    <select id="ddlCategory" class="form-control form-control-sm mr-sm-2">
-                        <option value=''>--Select Category--</option>
-                    </select>
-
                     <div class="input-group input-group-sm mr-sm-2" style="width: 150px;">
                         <input type="text" id="txt-search-keyword" class="form-control" placeholder="Search">
 
@@ -46,9 +36,6 @@
 
             </div>
         </div>
-
-
-
     </div>
     <!-- /.card-header -->
     <div class="card-body p-0">
@@ -56,10 +43,9 @@
             <thead>
                 <tr>
                     <th></th>
+                    <th>Account</th>
                     <th>Name</th>
-                    <th>Category</th>
-                    <th>Price</th>
-                    <th>Image</th>
+                    <th>Avatar</th>
                     <th>Created Date</th>
                     <th>Status</th>
                 </tr>
@@ -97,22 +83,28 @@
     </div>
 </div>
 
-<script id="tbl-template" type="x-tmpl-mustache">
+<script id="table-template" type="x-tmpl-mustache">
     <tr>
         <td scope="row">
             <button class="btn btn-sm btn-default btn-edit" data-id="{{Id}}"><i class="fas fa-pencil-alt"></i></button>
 
             <button class="btn btn-sm btn-danger btn-delete" data-id="{{Id}}"><i class="far fa-trash-alt"></i></button>
+
         </td>
-        <td>{{Name}}</td>
-        <td>{{CategoryName}}</td>
-        <td>{{Price}}</td>
-        <td>{{{ImageUrl}}}</td>
-        <td>{{CreatedDate}}</td>
+        <td>{{UserName}}</td>
+        <td>{{FullName}}</td>
+        <td>{{{Avatar}}}</td>
+        <td>{{{CreatedDate}}}</td>
         <td>{{{Status}}}</td>
+
     </tr>
-
 </script>
-
-
+<script id="role-template" type="x-tmpl-mustache">
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" {{Checked}} value="{{Name}}" name="ckRoles">
+            <span class="text">{{Description}}</span>
+        </label>
+    </div>
+</script>
 @Html.Partial("_AddEditModal.cshtml")

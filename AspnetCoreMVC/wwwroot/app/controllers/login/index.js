@@ -1,4 +1,4 @@
-﻿var loginController = function() {
+﻿var LoginController = function() {
     this.initialize = function () {
         registerEvents();
     }

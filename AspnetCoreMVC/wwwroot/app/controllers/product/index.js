@@ -1,4 +1,4 @@
-﻿var productController = function () {
+﻿var ProductController = function () {
     this.initialize = function () {
         loadCategories();
         loadData(false);
@@ -26,7 +26,7 @@
             }
         });
 
-        $('#ddlPageSize').on('change', function () {
+        $('#ddl-show-page').on('change', function () {
             console.log("change");
             coreapp.configs.pageSize = $(this).val();
             coreapp.configs.pageNo = 1;
@@ -34,7 +34,7 @@
             loadData(true);
         })
 
-        $('#btnSearch').on('click', function () {
+        $('#btn-search').on('click', function () {
             loadData(false);
         })
 
@@ -45,10 +45,37 @@
             }
         });
 
-        $("#btnCreate").on('click', function () {
+        $('#btnSelectImg').on('click', function () {
+            $('#fileInputImage').click();
+        });
+        $("#fileInputImage").on('change', function () {
+            var fileUpload = $(this).get(0);
+            var files = fileUpload.files;
+            var data = new FormData();
+            for (var i = 0; i < files.length; i++) {
+                data.append(files[i].name, files[i]);
+            }
+            $.ajax({
+                type: "POST",
+                url: "/Admin/Upload/UploadImage",
+                contentType: false,
+                processData: false,
+                data: data,
+                success: function (path) {
+                    $('#txtImage').val(path);
+                    coreapp.notify('Upload image succesful!', 'success');
+
+                },
+                error: function () {
+                    coreapp.notify('There was error uploading files!', 'error');
+                }
+            });
+        });
+
+        $("#btn-create").on('click', function () {
             initTreeDropDownCategory();
             resetFormMaintainance();
-            $('#modalAddEdit').modal('show');
+            $('#modal-add-edit').modal('show');
         });
         $('body').on('click', '.btn-edit', function (e) {
             e.preventDefault();
@@ -88,7 +115,7 @@
                     $('#ckHotM').prop('checked', data.HotFlag);
                     $('#ckShowHomeM').prop('checked', data.HomeFlag);
 
-                    $('#modalAddEdit').modal('show');
+                    $('#modal-add-edit').modal('show');
                     coreapp.stopLoading();
 
                 },
@@ -98,6 +125,7 @@
                 }
             });
         });
+
         $('body').on('click', '.btn-delete', function (e) {
             e.preventDefault();
             var that = $(this).data('id');
@@ -157,7 +185,7 @@
                         Id: id,
                         Name: name,
                         CategoryId: categoryId,
-                        Image: '',
+                        Image: image,
                         Price: price,
                         OriginalPrice: originalPrice,
                         PromotionPrice: promotionPrice,
@@ -179,7 +207,7 @@
                     },
                     success: function (response) {
                         coreapp.notify('Update product successful', 'success');
-                        $('#modalAddEdit').modal('hide');
+                        $('#modal-add-edit').modal('hide');
                         resetFormMaintainance();
 
                         coreapp.stopLoading();
@@ -195,33 +223,6 @@
 
         });
     }
-
-    $('#btnSelectImg').on('click', function () {
-        $('#fileInputImage').click();
-    });
-    $("#fileInputImage").on('change', function () {
-        var fileUpload = $(this).get(0);
-        var files = fileUpload.files;
-        var data = new FormData();
-        for (var i = 0; i < files.length; i++) {
-            data.append(files[i].name, files[i]);
-        }
-        $.ajax({
-            type: "POST",
-            url: "/Admin/Upload/UploadImage",
-            contentType: false,
-            processData: false,
-            data: data,
-            success: function (path) {
-                $('#txtImage').val(path);
-                coreapp.notify('Upload image succesful!', 'success');
-
-            },
-            error: function () {
-                coreapp.notify('There was error uploading files!', 'error');
-            }
-        });
-    });
 
     function registerControls() {
         CKEDITOR.replace('txtContent', {});
@@ -324,7 +325,7 @@
     }
 
     function loadData(isPageSizeChanged) {
-        var template = $('#tbl_template').html();
+        var template = $('#tbl-template').html();
         var render = "";
         $.ajax({
             type: 'GET',
@@ -350,7 +351,7 @@
                 });
                 $('#lblTotalRecords').text(response.RowCount);
                 if (render != '') {
-                    $('#tbl_content').html(render);
+                    $('#tbl-content').html(render);
                 }
                 wrapPaging(response.RowCount, function () {
                     loadData(false);
