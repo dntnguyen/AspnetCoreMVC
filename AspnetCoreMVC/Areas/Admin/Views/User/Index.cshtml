@@ -1,4 +1,7 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Authorization
+@using AspnetCoreMVC.Authorization
+@inject IAuthorizationService AuthorizationService
+@{
     ViewData["Title"] = "User List";
 }
 @section Scripts{
@@ -29,9 +32,16 @@
                         </div>
                     </div>
 
-                    <div class="input-group input-group-sm mr-sm-2">
-                        <button id="btn-create" class="btn btn-sm btn-primary">Create</button>
-                    </div>
+                    @{
+                        var createPermissionResult = await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Create);
+                        if (createPermissionResult.Succeeded)
+                        {
+                            <div class="input-group input-group-sm mr-sm-2">
+                                <button id="btn-create" class="btn btn-sm btn-primary">Create</button>
+                            </div>
+                        }
+                    }
+
                 </div>
 
             </div>
@@ -86,10 +96,19 @@
 <script id="table-template" type="x-tmpl-mustache">
     <tr>
         <td scope="row">
-            <button class="btn btn-sm btn-default btn-edit" data-id="{{Id}}"><i class="fas fa-pencil-alt"></i></button>
+            @{
+                var updatePermissionResult = await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Update);
+                if (updatePermissionResult.Succeeded)
+                {
+                    <button class="btn btn-sm btn-default btn-edit" data-id="{{Id}}"><i class="fas fa-pencil-alt"></i></button>
+                }
 
-            <button class="btn btn-sm btn-danger btn-delete" data-id="{{Id}}"><i class="far fa-trash-alt"></i></button>
-
+                var deletePermissionResult = await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Delete);
+                if (deletePermissionResult.Succeeded)
+                {
+                    <button class="btn btn-sm btn-danger btn-delete" data-id="{{Id}}"><i class="far fa-trash-alt"></i></button>
+                }
+            }
         </td>
         <td>{{UserName}}</td>
         <td>{{FullName}}</td>

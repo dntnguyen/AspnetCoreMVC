@@ -69,11 +69,14 @@
     {
       "library": "twbs-pagination@1.4.2",
       "destination": "wwwroot/lib/twbs-pagination/"
+    },
+    {
+      "library": "ckeditor@4.7.3",
+      "destination": "wwwroot/lib/ckeditor/"
+    },
+    {
+      "library": "jquery-treegrid@0.2.0",
+      "destination": "wwwroot/lib/jquery-treegrid/"
     }
-  ,
-{
-  "library": "ckeditor@4.7.3",
-  "destination": "wwwroot/lib/ckeditor/"
-}
-]
+  ]
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AspnetCoreMVC.Authorization;
 using AspnetCoreMVC.Helpers;
 using AutoMapper;
 using CoreApp.Application.Implementation;
@@ -10,6 +11,7 @@ using CoreApp.Data.EF;
 using CoreApp.Data.EF.Repositories;
 using CoreApp.Data.Entities;
 using CoreApp.Data.IRepositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -90,6 +92,7 @@ namespace AspnetCoreMVC
             services.AddTransient<IProductService, ProductService>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IRoleService, RoleService>();
+            services.AddTransient<IAuthorizationHandler, BaseResourceAuthorizationHandler>();
 
         }
 
