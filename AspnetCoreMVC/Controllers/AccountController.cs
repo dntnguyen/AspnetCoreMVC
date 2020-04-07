@@ -14,9 +14,9 @@ namespace AspnetCoreMVC.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly UserManager<AppUser> _userManager;
-        private readonly SignInManager<AppUser> _signInManager;
-        private readonly IEmailSender _emailSender;
+        //private readonly UserManager<AppUser> _userManager;
+        //private readonly SignInManager<AppUser> _signInManager;
+        //private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
         public AccountController(ILogger<HomeController> logger)
         {

@@ -9,7 +9,7 @@
     <link href="~/lib/jquery-easyui/themes/icon.css" rel="stylesheet" />
     <style>
         .red {
-            color:red;
+            color: red;
         }
     </style>
 
@@ -17,6 +17,9 @@
 @section Scripts {
     <script src="~/lib/ckeditor/ckeditor.js"></script>
     <script src="~/lib/jquery-easyui/jquery.easyui.min.js"></script>
+    <script src="~/app/controllers/product/quantity-management.js"></script>
+    <script src="~/app/controllers/product/image-management.js"></script>
+    <script src="~/app/controllers/product/whole-price-management.js"></script>
     <script src="~/app/controllers/product/index.js"></script>
     <script>
         var productObj = new ProductController();
@@ -54,7 +57,7 @@
                     </div>
                     <div class="input-group input-group-sm mr-sm-2">
                         <button class="btn btn-sm bg-success" id="btn-import" type="button"><i class="fas fa-file-import"></i></button>
-                    </div> 
+                    </div>
                     <div class="input-group input-group-sm mr-sm-2">
                         <button class="btn btn-sm bg-purple" id="btn-export" type="button"><i class="fas fa-file-excel"></i></button>
                     </div>
@@ -119,6 +122,10 @@
             <button class="btn btn-sm btn-default btn-edit" data-id="{{Id}}"><i class="fas fa-pencil-alt"></i></button>
 
             <button class="btn btn-sm btn-danger btn-delete" data-id="{{Id}}"><i class="far fa-trash-alt"></i></button>
+
+            <a href="#" data-id="{{Id}}" class="btn btn-xs btn-images"><i class="fa fa-image"></i></a>
+            <a href="#" data-id="{{Id}}" class="btn btn-xs btn-quantity"><i class="fas fa-hourglass-start"></i></a>
+            <a href="#" data-id="{{Id}}" class="btn btn-xs btn-whole-price"><i class="fas fa-money-bill"></i></a>
         </td>
         <td>{{Name}}</td>
         <td>{{CategoryName}}</td>
@@ -133,3 +140,6 @@
 
 @Html.Partial("_AddEditModal.cshtml")
 @Html.Partial("_ImportExcelModal.cshtml")
+@Html.Partial("_QuantityManagement.cshtml")
+@Html.Partial("_ImageManagement.cshtml")
+@Html.Partial("_WholePriceManagement.cshtml")

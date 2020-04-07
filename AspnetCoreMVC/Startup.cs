@@ -83,6 +83,9 @@ namespace AspnetCoreMVC
             services.AddTransient<IProductCategoryRepository, ProductCategoryRepository>();
             services.AddTransient<IFunctionRepository, FunctionRepository>();
             services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<IProductQuantityRepository, ProductQuantityRepository>();
+            services.AddTransient<IProductImageRepository, ProductImageRepository>();
+            services.AddTransient<IWholePriceRepository, WholePriceRepository>();
             services.AddTransient<IProductTagRepository, ProductTagRepository>();
             services.AddTransient<ITagRepository, TagRepository>();
             services.AddTransient<IPermissionRepository, PermissionRepository>();

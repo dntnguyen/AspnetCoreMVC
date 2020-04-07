@@ -23,16 +23,26 @@ namespace CoreApp.Application.Implementation
         private IProductRepository _productRepository;
         ITagRepository _tagRepository;
         IProductTagRepository _productTagRepository;
+        IProductQuantityRepository _productQuantityRepository;
+        IProductImageRepository _productImageRepository;
+        IWholePriceRepository _wholePriceRepository;
+
         IUnitOfWork _unitOfWork;
         public ProductService(IProductRepository productRepository,
             ITagRepository tagRepository,
             IProductTagRepository productTagRepository,
-            IUnitOfWork unitOfWork
+             IProductQuantityRepository productQuantityRepository,
+             IProductImageRepository productImageRepository,
+             IWholePriceRepository wholePriceRepository,
+        IUnitOfWork unitOfWork
             )
         {
             _productRepository = productRepository;
             _tagRepository = tagRepository;
             _productTagRepository = productTagRepository;
+            _productQuantityRepository = productQuantityRepository;
+            _productImageRepository = productImageRepository;
+            _wholePriceRepository = wholePriceRepository;
             _unitOfWork = unitOfWork; _productRepository = productRepository;
         }
 
@@ -205,6 +215,66 @@ namespace CoreApp.Application.Implementation
                     _productRepository.Add(product);
                 }
             }
+        }
+        public List<ProductQuantityViewModel> GetQuantities(int productId)
+        {
+            return _productQuantityRepository.FindAll(x => x.ProductId == productId).ProjectTo<ProductQuantityViewModel>().ToList();
+        }
+
+        public void AddQuantity(int productId, List<ProductQuantityViewModel> quantities)
+        {
+            _productQuantityRepository.RemoveMultiple(_productQuantityRepository.FindAll(x => x.ProductId == productId).ToList());
+            foreach (var quantity in quantities)
+            {
+                _productQuantityRepository.Add(new ProductQuantity()
+                {
+                    ProductId = productId,
+                    ColorId = quantity.ColorId,
+                    SizeId = quantity.SizeId,
+                    Quantity = quantity.Quantity
+                });
+            }
+        }
+
+        public List<ProductImageViewModel> GetImages(int productId)
+        {
+            return _productImageRepository.FindAll(x => x.ProductId == productId)
+                .ProjectTo<ProductImageViewModel>().ToList();
+        }
+
+        public void AddImages(int productId, string[] images)
+        {
+            _productImageRepository.RemoveMultiple(_productImageRepository.FindAll(x => x.ProductId == productId).ToList());
+            foreach (var image in images)
+            {
+                _productImageRepository.Add(new ProductImage()
+                {
+                    Path = image,
+                    ProductId = productId,
+                    Caption = string.Empty
+                });
+            }
+
+        }
+
+        public void AddWholePrice(int productId, List<WholePriceViewModel> wholePrices)
+        {
+            _wholePriceRepository.RemoveMultiple(_wholePriceRepository.FindAll(x => x.ProductId == productId).ToList());
+            foreach (var wholePrice in wholePrices)
+            {
+                _wholePriceRepository.Add(new WholePrice()
+                {
+                    ProductId = productId,
+                    FromQuantity = wholePrice.FromQuantity,
+                    ToQuantity = wholePrice.ToQuantity,
+                    Price = wholePrice.Price
+                });
+            }
+        }
+
+        public List<WholePriceViewModel> GetWholePrices(int productId)
+        {
+            return _wholePriceRepository.FindAll(x => x.ProductId == productId).ProjectTo<WholePriceViewModel>().ToList();
         }
     }
 }

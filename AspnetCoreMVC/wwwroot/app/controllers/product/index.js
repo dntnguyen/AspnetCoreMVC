@@ -1,9 +1,18 @@
 ﻿var ProductController = function () {
+    var self = this;
+
+    var quantityManagement = new QuantityManagement();
+    var imageManagement = new ImageManagement();
+    var wholePriceManagement = new WholePriceManagement();
+
     this.initialize = function () {
         loadCategories();
         loadData(false);
         registerEvents();
         registerControls();
+        quantityManagement.initialize();
+        imageManagement.initialize();
+        wholePriceManagement.initialize();
     }
 
     function registerEvents() {
@@ -310,14 +319,17 @@
             $(document)
                 .off('focusin.bs.modal') // guard against infinite focus loop
                 .on('focusin.bs.modal', $.proxy(function (e) {
+                    try {
+                        if (
+                            this.$element[0] !== e.target && !this.$element.has(e.target).length
+                            // CKEditor compatibility fix start.
+                            && !$(e.target).closest('.cke_dialog, .cke').length
+                            // CKEditor compatibility fix end.
+                        ) {
+                            this.$element.trigger('focus');
+                        }
+                    } catch (error) {
 
-                    if (
-                        this.$element[0] !== e.target && !this.$element.has(e.target).length
-                        // CKEditor compatibility fix start.
-                        && !$(e.target).closest('.cke_dialog, .cke').length
-                        // CKEditor compatibility fix end.
-                    ) {
-                        this.$element.trigger('focus');
                     }
                 }, this));
         };
