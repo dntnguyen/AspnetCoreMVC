@@ -18,6 +18,11 @@
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
+    <style>
+        .hide {
+            display:none;
+        }
+    </style>
     @RenderSection("Styles", required: false)
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -89,6 +94,9 @@
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
+            <div class="dv-loading hide" style="position:absolute;top:50%;left:50%;background-color:black;color:white;padding:20px;">
+                Please wait...
+            </div>
             @RenderBody()
         </div>
         <!-- /.content-wrapper -->

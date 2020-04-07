@@ -1,0 +1,96 @@
+﻿@{
+    ViewData["Title"] = "Bill management";
+}
+@section Scripts{
+    <script src="~/lib/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <script src="~/app/controllers/bill/index.js" asp-append-version="true"></script>
+    <script>
+        var billObj = new BillController();
+        billObj.initialize();
+    </script>
+}
+@section Styles{
+    <link href="~/lib/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" />
+}
+<input type="hidden" id="hid-category-id" value="0" />
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Bill management</h3>
+        <div class="card-tools">
+            <div class="row">
+                <div class="col-md-3 col-sm-3 col-xs-12 form-group">
+                    <input type="text" id="txtFromDate" class="form-control" placeholder="From Date">
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-12 form-group">
+                    <input type="text" id="txtToDate" class="form-control" placeholder="To date">
+                </div>
+                <div class="col-md-2 col-sm-3 col-xs-12 form-group">
+                    <input type="text" id="txtSearchKeyword" class="form-control" placeholder="Tìm kiếm...">
+
+                </div>
+                <div class="col-md-2 col-sm-2 col-xs-12 form-group">
+                    <button class="btn btn-default" id="btn-search" type="button">Search!</button>
+                </div>
+                <div class="col-md-2 col-sm-2 col-xs-12 form-group">
+                    <button class="btn btn-success" id="btn-create" type="button">Create</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- /.card-header -->
+    <div class="card-body p-0">
+
+        <table id="tbl-product" class="table table-sm table-striped table-bordered nowrap">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Customer name</th>
+                    <th>Payment method</th>
+                    <th>Order date</th>
+                    <th>Status</th>
+                    <th>Detail</th>
+                </tr>
+            </thead>
+            <tbody id="tbl-content"></tbody>
+        </table>
+    </div>
+
+    <!-- /.card-body -->
+    <div class="card-footer clearfix">
+        <div class="row">
+            <div class="col-sm-5">
+                <div class="dataTables_info" id="datatable-checkbox_info" role="status" area-live="polite">
+                    <select id="ddl-show-page">
+                        <option value="10" selected="selected">10</option>
+                        <option value="20">20</option>
+                        <option value="30">30</option>
+                        <option value="50">50</option>
+                    </select>
+                    <span class="item-per-page">
+                        mẫu tin/trang
+                    </span>
+                    Tổng số mẫu tin: <strong id="lbl-total-records"></strong>
+                </div>
+            </div>
+            <div class="col-sm-7">
+                <div class="datatables_paginate paging_simple_numbers" id="datatable-checkbox_paginate">
+                    <ul id="paginationUL"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script id="table-template" type="x-tmpl-mustache">
+    <tr>
+        <td>{{Id}}</td>
+        <td>{{CustomerName}}</td>
+        <td>{{{PaymentMethod}}}</td>
+        <td>{{{DateCreated}}}</td>
+        <td>{{{BillStatus}}}</td>
+        <td><a href="#" data-id="{{Id}}" class="btn-view"><i class="fa fa-eye"></i></a></td>
+    </tr>
+</script>
+
+@Html.Partial("_DetailModal.cshtml")
