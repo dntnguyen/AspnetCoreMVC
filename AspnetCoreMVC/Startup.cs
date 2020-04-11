@@ -93,6 +93,15 @@ namespace AspnetCoreMVC
             services.AddTransient<IBillDetailRepository, BillDetailRepository>();
             services.AddTransient<IColorRepository, ColorRepository>();
             services.AddTransient<ISizeRepository, SizeRepository>();
+
+            services.AddTransient<IBlogRepository, BlogRepository>();
+
+            services.AddTransient<IBlogTagRepository, BlogTagRepository>();
+            services.AddTransient<ISlideRepository, SlideRepository>();
+            services.AddTransient<ISystemConfigRepository, SystemConfigRepository>();
+
+            services.AddTransient<IFooterRepository, FooterRepository>();
+
             //Service
             services.AddTransient<IProductCategoryService, ProductCategoryService>();
             services.AddTransient<IFunctionService, FunctionService>();
@@ -100,6 +109,10 @@ namespace AspnetCoreMVC
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IRoleService, RoleService>();
             services.AddTransient<IBillService, BillService>();
+
+            services.AddTransient<IBlogService, BlogService>();
+            services.AddTransient<ICommonService, CommonService>();
+
             services.AddTransient<IAuthorizationHandler, BaseResourceAuthorizationHandler>();
 
         }
