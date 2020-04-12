@@ -36,5 +36,10 @@ namespace CoreApp.Application.Interfaces
         List<WholePriceViewModel> GetWholePrices(int productId);
         List<ProductViewModel> GetLastest(int top);
         List<ProductViewModel> GetHotProduct(int top);
+        List<ProductViewModel> GetRelatedProducts(int id, int top);
+
+        List<ProductViewModel> GetUpsellProducts(int top);
+
+        List<TagViewModel> GetProductTags(int productId);
     }
 }

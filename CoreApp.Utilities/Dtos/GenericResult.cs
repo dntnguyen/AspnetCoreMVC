@@ -24,6 +24,13 @@ namespace CoreApp.Utilities.Dtos
             Message = message;
         }
 
+        public GenericResult(bool success, string message, object data)
+        {
+            Success = success;
+            Message = message;
+            Data = data;
+        }
+
         public GenericResult(bool success, object data)
         {
             Success = success;
